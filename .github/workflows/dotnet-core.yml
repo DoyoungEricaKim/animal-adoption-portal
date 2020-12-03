@@ -1,0 +1,33 @@
+name: .NET Core
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - uses: actions/upload-artifact@v2
+      with:
+        name: doyoung-artifact
+        path: /home/runner/work/animal-adoption-portal/animal-adoption-portal/AnimalAdoption.Web.Portal/bin/Release/netcoreapp3.1/AnimalAdoption.Web.Portal.dll
+    - name: List out directory contents
+      run: |
+        echo Listing the contents of the GitHub workspace directory
+        ls ${{ github.workspace }}
+        echo Recursively listing all contents of the current directory
+        ls -R
