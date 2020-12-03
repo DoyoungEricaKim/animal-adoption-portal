@@ -1,0 +1,31 @@
+name: .NET Core
+
+on:
+  pull_request:
+    branches: [ dev ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.301
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: doyoung-artifact
+        path: /home/runner/work/animal-adoption-portal/animal-adoption-portal/AnimalAdoption.Web.Portal/bin/Release/netcoreapp3.1/AnimalAdoption.Web.Portal.dll
+  
+
+      
