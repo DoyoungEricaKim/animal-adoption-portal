@@ -14,7 +14,7 @@ namespace AnimalAdoption.Service.Login.UnitTests
             var userId = "user1";
 
             var memoryCache = new MemoryCache(new MemoryCacheOptions());
-            var resultingId = new LoginService(memoryCache, new AnimalService()).GetLoginUserFromId(userId);
+            var resultingId = new LoginService().GetLoginUserFromId(userId);
 
             Assert.Equal("user1", resultingId);
         }
