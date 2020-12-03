@@ -20,7 +20,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test AnimalAdoption.Web.Portal.UnitTests --no-restore --verbosity normal
 
     - uses: actions/upload-artifact@v2
       with:
