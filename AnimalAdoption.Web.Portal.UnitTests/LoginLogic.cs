@@ -11,12 +11,12 @@ namespace AnimalAdoption.Service.Login.UnitTests
         [Fact]
         public void LoginManagement_LoginRequested()
         {
-            var userId = "user1";
+            var userId = "placeholder";
 
             var memoryCache = new MemoryCache(new MemoryCacheOptions());
             var resultingId = new LoginService().GetLoginUserFromId(userId);
 
-            Assert.Equal("user1", resultingId);
+            Assert.Equal("DevOps_Team3", resultingId);
         }
     }
 }
