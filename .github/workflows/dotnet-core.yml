@@ -42,4 +42,4 @@ jobs:
       run: dotnet pack --configuration Release ${{ env.LogicProjectPath }}
  
     - name: Push package to GitHub registry
-      run: dotnet nuget push ${{ env.LogicProjectPath }}/**/*.nupkg --skip-duplicate
+      run: dotnet nuget push ${{ env.LogicProjectPath }}/**/*.nupkg
